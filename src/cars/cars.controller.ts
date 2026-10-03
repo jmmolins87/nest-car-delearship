@@ -17,7 +17,6 @@ export class CarsController {
 
     @Get(':id')
     getCarById(@Param('id', ParseUUIDPipe) id: string) {
-        console.log('id:', id);
         return this.carsService.findOneById(id);
     }
 
