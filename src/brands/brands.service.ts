@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid';
 
 import { BrandEntity } from './entities/brand.entity.js';
 import { CreateBrandDto, UpdateBrandDto } from './dto/index.js';
+import { Car } from '../cars/interfaces/car.interface.js';
 
 
 @Injectable()
@@ -14,7 +15,7 @@ export class BrandsService {
       id: uuid(),
       name: 'Toyota',
       createdAt: new Date().getTime(),
-      updatedAt: Date.now()
+      updatedAt: new Date().getTime()
     }
   ];
 
@@ -24,7 +25,7 @@ export class BrandsService {
       id: uuid(),
       ...createBrandDto,
       createdAt: new Date().getTime(),
-      updatedAt: Date.now()
+      updatedAt: new Date().getTime()
     };
     
     this.brands.push(brand);
@@ -60,5 +61,9 @@ export class BrandsService {
 
   remove(id: string) {
     this.brands = this.brands.filter(brand => brand.id !== id);
+  }
+
+  fillBRANDSWithSeedData(brands: BrandEntity[]) {
+    this.brands = brands;
   }
 }
